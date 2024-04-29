@@ -47,5 +47,5 @@
 - [Graph-based Modeling of Online Communities for Fake News Detection]()
 
 #### Echo Chambers
-    - [DeepFakE: improving fake news detection using tensor decomposition‑based deep neural network](./refs/notes/echo_chambers.md)
+- [DeepFakE: improving fake news detection using tensor decomposition‑based deep neural network](./refs/notes/echo_chambers.md)
 

@@ -7,7 +7,7 @@
     - pode ser exatamente oque eu quero fazer
     - Real-time text-based classification of news articles by utilizing 
     these content and context-based features for the real-world dataset (graph-based)
-
+- [] Revisao de literatura deve estar interconectada com a introducao 
 
 ## ECHO CHAMBERS
 - news articles are shared within echo chambers
