@@ -22,24 +22,29 @@ Real time classification of news articles considering news content and social co
             - other nodes are retweets
         4. Spatial–Temporal Similarity Graph (Detection and analysis of fake news user communities): 
             -It generates the graph that connects the users who participate
-            in the same news campaigns during the first T time period since the beginning of the campaigns.
+            in the same news campaigns during the first T time period since the beginning 
+            of the campaigns.
 
 ## TODO:
 
-- [~] read
+- [ ] read
+    1. IMPORTANTES:
     - lido [User Preference-aware Fake news detection](./refs/importantes/2104.12259v1.pdf)
     - lido [FakeNewsNet: A Data Repository with News Content, Social Context and Spatiotemporal Information for Studying Fake News on Social Media](./refs/importantes/fake_news_net.pdf)
     - lido [Fake News Tracker](./refs/importantes/FakeNewsTracker_a_tool_for_fake_news_collection_de.pdf)
-    - lido [Graph Neural Networks with Continual Learning for Fake News Detection from Social Media](./refs/importantes/Graph Neural Networks with Continual Learning for Fake News.pdf)
+    - lido [Graph_Neural_Networks_with_Continual_Learning_for_Fake_News_Detection_from_Social_Media](./refs/importantes/Graph Neural Networks with Continual Learning for Fake News.pdf)
     - lido [A survey of fake news](./refs/importantes/1812.00315v2.pdf)
     - lido [Detection and analysis of fake news user communities](./refs/communities/Detection_and_Analysis_of_Fake_News_Users_Communities_in_Social_Media.pdf)
-    - [Early Detection of Fake News on Social Media Through Propagation Path Classiﬁcation with Recurrent and Convolutional Networks](./refs/3504035.3504079.pdf)
-    - [Geometric Deep Learning - GCNFN](./refs/geometric_deep_learning.pdf)
-    - [Leveraging Multi-Source Weak Social Supervision for Early Detection of Fake News.](./refs/2004.01732v1.pdf)
-    - [Fake News Early Detection: A Theory-driven Model](./refs/3377478.pdf)
-- [~] definir o que vou retirar de cada artigo em cada ./refs/importantes/
-- [~] ENTENDER GNN - GRAPH NEURAL NETWORKS  <--
-- [~] ESTUDAR EARLY DETECTION DE FAKE NEWS  <-- 
+    - ... [Fake News Early Detection: A Theory-driven Model](./refs/importantes/3377478.pdf)
+    - [Fake news detection based on news content and social contexts: a transformer-based approach](./refs/importantes/Fake news detection based on news content and social contexts: a transformer-based approach.pdf)
+    2. RANDOM :
+    - ... [Leveraging Multi-Source Weak Social Supervision for Early Detection of Fake News.](./refs/random/2004.01732v1.pdf)
+    - ... [Mining User Aware relations fake news detec](./refs/mining_user_aware.pdf)
+    - ... [Early Detection of Fake News on Social Media Through Propagation Path Classifiwith Recurrent and Convolutional Networks](./refs/3504035.3504079.pdf)
+    - ... [Geometric Deep Learning - GCNFN](./refs/geometric_deep_learning.pdf)
+- [ ] definir o que vou retirar de cada artigo em cada ./refs/importantes/
+- [ ] ENTENDER GNN - GRAPH NEURAL NETWORKS  <--
+- [ ] ESTUDAR EARLY DETECTION DE FAKE NEWS  <-- 
 - [ ] Mudar Related Work, Introduction
 - [X] organizacao metodologia -> fazer diagrama:
 - [x] review on [echo chambers (for graph based community identification)](./refs/echo_chambers.md)
@@ -52,6 +57,12 @@ Real time classification of news articles considering news content and social co
     - PROBLEMAS :
     - twitter mudou de politicas para desenvolvedores, codigo da FakeNewsNet pode ter que mudar
     - USAR alternativas da API do twitter
+    - IDEIA: 
+        - Baixar somente noticias do FakeNewsNet 
+        - Construir "social context" com Reddit/Facebook
+        - OU
+        - Utilizar outra fonte de noticias (Politifact/Snopes) <-
+        - Crawlar e reconstruir sample dataset no Facebook/Reddit
 
 
 ## Tools
@@ -60,23 +71,21 @@ Real time classification of news articles considering news content and social co
 - [speech_recognition](https://github.com/Uberi/speech_recognition)
     - Library for performing speech recognition, with support for several engines and APIs, online and offline 
 - [NOW corpus](https://www.corpusdata.org/now_corpus.asp)
-    - NOW corpus contains data from 32,217,384 texts from online magazines and newspapers in 20 different English-speaking countries from 2010 to the current time
+    - NOW corpus contains data from 32,217,384 texts from online magazines and newspapers in 
+    20 different English-speaking countries from 2010 to the current time
 - [NOW corpus portugues](https://www.corpusdoportugues.org/now/)
-    - The Corpus do Português NOW corpus (News on the Web) contains about 1.1 billion words of data from web-based newspapers and magazines in four Portuguese-speaking countries from 2012-2019. 
+    - The Corpus do Português NOW corpus (News on the Web) contains about 1.1 billion words of data 
+    from web-based newspapers and magazines in four Portuguese-speaking countries from 2012-2019. 
 - [Netwokrx](https://networkx.org/)
     - creation, manipulation, and study of the structure, dynamics, and community of networks.  
 - Dataset :
     - [FakeNewsNet](https://github.com/KaiDMML/FakeNewsNet)
-        - First, the rich set of features in the datasets provides an op-
-        portunity to experiment with different approaches for fake
-        new detection, understand the diffusion of fake news in so-
-        cial network and intervene in it. Second, the temporal in-
-        formation enables the study of early fake news detection by
-        generating synthetic user engagements from historical tem-
-        poral user engagement patterns in the dataset. 
-        Third, we can investigate the fake news diffusion pro-
-        cess by identifying provenances, persuaders, and developing
-        better fake news intervention strategies
+    - [Fakeddit](https://fakeddit.netlify.app/)
+    - [FacebookHoax]()
+    - [NELA-GT](https://github.com/MELALab/nela-gt)
+- [Docker Image GNNs+CUDA](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pyg/tags)
+- [Scrape Twitter 2 ](https://blog.apify.com/how-to-scrape-tweets-and-more-on-twitter-59330e6fb522/)
+- [Facebook Graph API](https://developers.facebook.com/docs/graph-api/get-started)
 
 ## Related Work Structure
 

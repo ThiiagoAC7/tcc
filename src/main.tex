@@ -1,11 +1,12 @@
 \documentclass[12pt]{article}
 
 \usepackage{sbc-template}
-
 \usepackage{graphicx,url}
 
 %\usepackage[brazil]{babel}   
 \usepackage[utf8]{inputenc}  
+\usepackage{pgfgantt} % For Gantt charts
+\usepackage{enumitem}
 
 \sloppy
 
@@ -15,9 +16,7 @@
 
 
 \address{ICEI – Pontifícia Universidade Católica de Minas Gerais (PUC-MG)\\
-    Belo Horizonte, Minas Gerais - Brasil 
-    \email{thiago.amado@sga.pucminas.br, humberto@sga.pucminas.br}
-}
+    Belo Horizonte, Minas Gerais - Brasil \email{thiago.amado@sga.pucminas.br, humberto@sga.pucminas.br} }
 
 \begin{document}
 
@@ -49,6 +48,7 @@ This phenomenon poses serious threats to today's social media, as it spreads fas
 than credible information (\cite{doi:10.1126/science.aap9559}), and Deepfakes are becoming more
 accessible and believable (\cite{KIETZMANN2020135}). This reinforces the importance of further
 research on this topic.
+Echo chambers also agravate the problem (\cite{Cinelli_2021}).
 Hence, the primary objectives of this study are to analyze various methodologies for detecting
 Fake News and Deepfakes, as well as to examine and identify the communities associated with them.
 
@@ -100,6 +100,27 @@ than news content features in predicting fake news, with user-based, post-based,
 The study demonstrates that the TriFN approach significantly outperforms other baseline methods for fake news detection,
 showcasing the importance of considering social context in combating fake news.
 
+
+Recent advancements in fake news detection on social media have increasingly utilized Graph Neural Networks (GNNs)
+to identify patterns in information propagation, independent of textual content. 
+This approach addresses the necessity of distinguishing between real and fake news based on their spread through networks. 
+In this fiels, \cite{han2020graph} proposes a propagation-based detection framework employing GNNs, 
+which exploits the distinctive dissemination behaviors of fake versus real news online. 
+Additionally, to address the challenge of adapting to new and unseen data, 
+the study introduces a continual learning method that ensures balanced performance across 
+both existing and novel datasets. 
+This innovation mitigates the common issue of performance degradation when 
+models encounter unfamiliar data, thereby 
+enhancing the robustness and applicability of fake news detection systems.
+
+\cite{10.1145/3377478} presents a theory-driven model designed for the 
+early detection of fake news, with a focus on analyzing news content rather than its propagation 
+across social media platforms. By integrating insights from established theories in social 
+psychology, the research explores multiple levels of news content, 
+thereby improving the interpretability of fake news feature engineering. 
+Leveraging supervised machine learning techniques, the model demonstrates superior 
+performance when compared to existing methods, 
+showcasing its ability to achieve early detection even when confronted with limited content information.
 
 \subsection{Social Media Communities}
 
@@ -224,6 +245,60 @@ A time limit is also set, to consider only the first hour of spreading.
 % allows a measure of real-time heat (the number of users posting/reposting the news at a given time t), 
 % as explained by \cite{Zhou_2020}.
 
+
+\subsection{Timeline}
+% Sobre o cronograma, você precisa planejar o que vai fazer no segundo segundo semestre. 
+% Comece de trás para frente por uma data de apresentação do TCC no final do semestre. 
+% Aí você coloca quanto tempo precisa para finalizar a escrita do TCC um mês antes da apresentação, uma vez que preciso revisar. 
+% Em seguida, ainda de trás para frente, coloque as tarefas com o respectivo tempo de execução que ainda faltam!
+
+
+\begin{ganttchart}[
+    hgrid,
+    vgrid,
+    x unit=1.2cm, % Adjust the unit size
+    y unit title=0.8cm,
+    y unit chart=0.5cm,
+    title height=1,
+    title label anchor/.style={below=-1.6ex},
+    bar/.append style={fill=blue!30},
+    group/.append style={fill=blue!60, draw=blue}, % Change group color to blue
+    group right shift=0,
+    group top shift=0.6,
+    group height=.3,
+    bar height=.5,
+    milestone height=.5,
+    milestone top shift=.6,
+    milestone label font=\tiny\color{black!50},
+    bar label font=\scriptsize\color{black!50},
+    group label font=\scriptsize\color{black!50},
+    link/.style={-latex, red}
+]{1}{7}
+    \gantttitle{Months (June to December)}{7} \\
+    \gantttitlelist{6,7,8,9,10,11,12}{1} \\
+
+    % Data Collection and Analysis
+    \ganttgroup{Data Collection \& Analysis}{1}{3} \\
+    \ganttbar{Collect Data}{1}{2} \\
+    \ganttbar{Clean Data}{2}{3} \\
+
+    % Data Collection and Analysis
+    \ganttgroup{Building the Model \& Comparing the Results}{3}{5} \\
+    \ganttbar{Apply UPFD Framework}{3}{3} \\
+    \ganttbar{UPFD Framework for Early Detection}{3}{5} \\
+    \ganttbar{Result analysis}{4}{5} \\
+
+    % Writing the Thesis
+    \ganttgroup{Finalizing the written document}{5}{7} \\
+    \ganttbar{Result analysis}{5}{7} \\
+    \ganttbar{Fix written errors}{5}{6} \\
+    \ganttbar{Review}{6}{7} \\
+
+    % Final Submission
+    \ganttgroup{Final Submission}{7}{7} \\
+    \ganttbar{Review Final Document}{7}{7} \\
+    \ganttbar{Submit Thesis}{7}{7} \\
+\end{ganttchart}
 
 \section{Expected Results}
 
