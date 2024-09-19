@@ -1,4 +1,4 @@
-# TCC: Identifying (deep) fake news communities on multiple social networks
+# TCC: Notes, references and ideas
 
 Thiago Amado Costa
 
