@@ -10,7 +10,7 @@
 
 \sloppy
 
-\title{Identifying (deep) fake news communities on multiple social networks}
+\title{Analysis of Communities formed on Youtube Comment Sections}
 
 \author{Thiago Amado Costa\inst{1}, Humberto Torres Marques Neto\inst{1}}
 
@@ -23,240 +23,204 @@
 \maketitle
 
 \begin{abstract}
-	The misuse of Deepfakes and the rise of Fake News have become a significant challenge in the
-	era of social media, posing serious threats to the credibility of information shared online.
-	Additionally, individuals and groups can become targets of these malicious actions, creating
-	communities that believe and share news of the same malicious sources.
-	This problem is not exclusive to a single social media platform, which highlights the urgent
-	need for robust fact-checking mechanisms, as well as solutions to identify these specific
-	communities, that will help create a safer online environment.
+    YouTube is the largest video streaming platform on the web, attracting billions of users 
+    daily who watch and engage with content through comments. 
+    A significant portion of these users consists of children and teenagers, who frequently interact 
+    with one another in the comment sections, forming active communities. 
+    However, these communities can also experience negative interactions between users, 
+    including instances of online bullying and hate speech.
+    To explore these communities, the YouTube Data API v3 was used to collect comments 
+    from videos produced by creators targeting this demographic. 
+    Topic modeling and sentiment analysis were then applied to further explore the 
+    content and dynamics within these communities.
 \end{abstract}
 
 \section{Introduction}
 % >> Descrição de motivações
 % >> Problema escolhido e objetivos
 
-Fake News and Deepfakes are one of the biggest challenges in today's social media, threatening the
-credibility of information shared online.
-Fake News is defined as incorrect or misleading information fabricated to mimic the structure of
-the news media, but without the process of ensuring accuracy and credibility (\cite{lazer2018science}),
-and Deepfake is a form of multimedia manipulation that leverages advanced machine learning and artificial
-intelligence techniques to manipulate or generate visual and audio content, with a high capacity to deceive
-viewers (\cite{KIETZMANN2020135}).
+% - youtube
+% - kids, teenagers 
+% - brasil 
+% - bullying, 
+% - comentarios, comunidades 
 
-This phenomenon poses serious threats to today's social media, as it spreads faster and more broadly
-than credible information (\cite{doi:10.1126/science.aap9559}), and Deepfakes are becoming more
-accessible and believable (\cite{KIETZMANN2020135}). This reinforces the importance of further
-research on this topic.
-Echo chambers also agravate the problem (\cite{Cinelli_2021}).
-Hence, the primary objectives of this study are to analyze various methodologies for detecting
-Fake News and Deepfakes, as well as to examine and identify the communities associated with them.
+Youtube has grown exponentially since its launch in 2005. With billions of users, it is now the 
+largest video streaming platform on the web, and and a major source of online entertainment content. 
+As mentioned by \cite{app13064044}, many children and teenagers use the platform as an alternative to 
+traditional entertainment sources, such as television, with the majority of their 
+browsing time spent on YouTube.
+
+One of the ways kids and teenagers interact on the platform is through the comment section. 
+This feature allows users to share their thoughts on the video, the content creator, 
+or even other commenters. Additionally, users can respond to existing comments, 
+facilitating public conversations and discussions on a wide range of topics, forming community structures. 
+Unfortunately, many users take advantage of this feature to spread negative comments, targeting 
+either the content creator or other commenters. 
+This can lead to a toxic enviroment which is particularly concerning given the platform's 
+popularity among children and teenagers.
+
+Therefore, this study aims to analyze the community structures that emerge within the comment 
+sections of Brazilian YouTubers who create content aimed at children and teenagers, 
+as well as the content of the comments themselves.
 
 \section{Related Work}
 
-Identifying and mitigating the spread of fake news has become a pressing concern in recent years,
-as the proliferation of social media platforms has enabled the rapid dissemination of
-misinformation.
-In this section, we review existing research that focuses on detecting fake news,
-as well as  communities across multiple social networks.
-
-\subsection{Fake News}
-
-The spread of fake news has become a major concern, impacting public opinion and civil debate.
-To combat this, researchers from many fields are developing methods to identify false information.
-This section explores key studies and approaches used in detecting fake news.
-
-\cite{Ruchansky_2017} combines text, response, and source characteristics of news articles to approach
-the fake news dectection.
-Unlike existing solutions that focus on individual aspects, the CSI model integrates these three
-key features using deep neural networks to automatically select important information and capture
-temporal dependencies in user engagement. By providing insights on both articles and users,
-CSI offers a more comprehensive understanding of fake news propagation. Experimental results on
-real-world datasets demonstrate that the CSI model achieves higher classification accuracy compared
-to previous methods, while also requiring fewer parameters and training efforts.
-This highlights the effectiveness of the CSI model in accurately detecting fake
-news and addressing the challenges associated with automated fake news detection.
-
-\cite{DeepFakE} introduces a new model called DeepFakE for improving fake news detection by combining news content and social context.
-The approach combines news content and social context-based features in a tensor,
-resulting in a higher-order decision boundary and achieving state-of-the-art results for fake news detection.
-The article shows the significance of examining the social context for improving fake news detection.
-It emphasizes the role of user social engagements and echo chambers in the dissemination of fake news.
-Echo chambers, which are groups of like-minded individuals, play a vital role in the spread of fake news as
-they tend to share stories that align with their beliefs.
-The article suggests that utilizing echo chambers to obtain user-related and community-related
-information from news articles can enhance fake news detection.
-
-\cite{chandra2020graphbased} discusses the use of different baselines for fake news detection, including text-based,
-majority sharing, and social baselines. It compares the article sharing behavior of users in two datasets,
-GossipCop and HealthStory, highlighting differences in user characteristics and community graph structures.
-The study shows that GNNs are more effective in detecting fake articles in GossipCop due to richer community-level features,
-while struggling in HealthStory due to limited user representations and mixed article sharing patterns.
-The proposed graph-based approach outperforms text-based models, emphasizing the importance of community-based modeling in fake news detection.
-
-\cite{shu2018news} explores the role of social context in detecting fake news, proposing a TriFN framework that considers the tri-relationship
-among publishers, news pieces, and users for classification. It highlights that social context features are more effective
-than news content features in predicting fake news, with user-based, post-based, and network-based features playing crucial roles.
-The study demonstrates that the TriFN approach significantly outperforms other baseline methods for fake news detection,
-showcasing the importance of considering social context in combating fake news.
+Identifying and mitigating the spread of toxicity on online platforms has become a pressing concern 
+in recent years, as the proliferation of social media platforms has enabled the rapid dissemination of
+bullying, hate speech, and other forms ot toxic behaviour.
+In this section, we review existing research that focuses on community detection on social media,
+as well as textual content analysis.
 
 
-Recent advancements in fake news detection on social media have increasingly utilized Graph Neural Networks (GNNs)
-to identify patterns in information propagation, independent of textual content. 
-This approach addresses the necessity of distinguishing between real and fake news based on their spread through networks. 
-In this fiels, \cite{han2020graph} proposes a propagation-based detection framework employing GNNs, 
-which exploits the distinctive dissemination behaviors of fake versus real news online. 
-Additionally, to address the challenge of adapting to new and unseen data, 
-the study introduces a continual learning method that ensures balanced performance across 
-both existing and novel datasets. 
-This innovation mitigates the common issue of performance degradation when 
-models encounter unfamiliar data, thereby 
-enhancing the robustness and applicability of fake news detection systems.
+\cite{shajari2023} explores the problematic behaviors of 
+commenters on YouTube, specifically focusing on "commenter mobs" that manipulate engagement 
+metrics to distort public perception, particularly around misleading narratives about the U.S. military. 
+By analyzing 20 targeted channels through social network analysis, the research fills gaps in 
+understanding how suspicious commenter activities boost engagement, which has been insufficiently 
+addressed in prior literature. Employing a co-commenter network model and clustering techniques, 
+the study identifies distinct groups with varying levels of suspiciousness and highlights collusion 
+among commenters across channels. Key findings reveal central figures driving discussions and 
+coordinated efforts to amplify specific narratives, suggesting these channels significantly contribute 
+to the spread of misinformation. The study concludes with a call for further research into the 
+motivations behind these behaviors and their implications for misinformation dissemination online.
 
-\cite{10.1145/3377478} presents a theory-driven model designed for the 
-early detection of fake news, with a focus on analyzing news content rather than its propagation 
-across social media platforms. By integrating insights from established theories in social 
-psychology, the research explores multiple levels of news content, 
-thereby improving the interpretability of fake news feature engineering. 
-Leveraging supervised machine learning techniques, the model demonstrates superior 
-performance when compared to existing methods, 
-showcasing its ability to achieve early detection even when confronted with limited content information.
 
-\subsection{Social Media Communities}
+\cite{hussain2018analyzing} examines how the proliferation of smart devices and social media, 
+particularly YouTube, has facilitated social and political fragmentation through cyber propaganda,
+especially targeting youth with conspiracy theories. 
+It investigates disinformation tactics used on a specific conspiracy theory channel,
+distinguishing its approach from previous studies by focusing on user engagement patterns rather 
+than just spam detection. 
+Data was collected using the YouTube Data API, monitoring metrics like views, likes, dislikes, 
+and comments, revealing patterns indicative of potential manipulation. 
+The analysis identified two commenter groups, peripheral and core, with the second group exhibiting higher 
+instances of inorganic behaviors. A co-commenter network analysis revealed clusters around specific 
+conspiracy topics and identified bot-like and spam actions. The study emphasizes the need for early 
+detection of such behaviors to safeguard democratic processes and suggests future research on 
+comment semantics and algorithmic biases in video recommendations.
 
-Community detection has garnered significant attention across various disciplines due to its applications
-in understanding the structure and dynamics of complex systems.
-Over the years, researchers have proposed numerous algorithms and methods to identify cohesive groups within networks.
-In this section, we provide an overview of key works in the field.
 
-\cite{Raghavan_2007} proposes a new algorithm for efficiently detecting communities in large networks.
-The algorithm leverages a label propagation approach where nodes iteratively adopt the most
-common label among their neighbors. This simple strategy facilitates the formation of communities without
-requiring prior knowledge about their structure or size. The effectiveness of the algorithm is demonstrated
-on well-established benchmarks, achieving high accuracy. Moreover, the algorithm boasts a near-linear time complexity,
-making it significantly faster than existing methods. Furthermore, it bypasses the need for complex function
-optimization or parameter tuning, offering a more straightforward and
-computationally efficient approach to community detection in large-scale networks.
+\cite{ashraf2021abusive} addresses the growing issue of abusive language on social media, 
+particularly YouTube, highlighting its mental health implications and the urgent need for 
+effective detection models. It reviews various abusive language datasets, including the Smokey-Corpus 
+and Twitter-WH-Corpus, and contrasts early detection methods with recent advances in machine 
+learning and deep learning techniques that incorporate contextual information. The authors present 
+a novel dataset of 18,794 YouTube comments and replies, emphasizing a context-aware approach 
+to labeling abusive language, with a focus on political and religious topics. 
+The study highlights the importance of context in accurately detecting abusive language 
+and notes challenges related to non-standard language forms, suggesting directions for 
+future research that includes expanding the dataset and employing advanced classifiers like BERT.
 
-\cite{ZHANG2016133} proposes a parallel label propagation algorithm to identify communities within social networks.
-It tackles shortcomings of the traditional label propagation method.
-The new algorithm incorporates grey relational analysis during label updates, leading to less randomness in label selection.
-Additionally, it optimizes the parallel computation steps. Experiments on various social networks, both simulated and real-world, demonstrate
-that this approach is scalable and delivers high accuracy in identifying communities
 
-\cite{Chunaev_2020} dives into the challenge of uncovering communities within social networks, highlighting the importance of considering both
-the network's structure (connections between users) and the attributes of individual users (interests, demographics).  A key point
-addressed is the current lack of knowledge on how these two aspects influence the accuracy of community detection.
-To shed light on this, the article provides a classification system for different community detection methods based on how they
-integrate network structure and node attributes. This classification goes beyond just naming categories, offering technical details and
-insights into how these methods perform. The article explores various approaches like those based on metaheuristics, probabilistic models,
-and reaching consensus among different detection strategies.
+\cite{kirdemir2023} investigates coordinated inauthentic campaigns on YouTube, focusing on 
+characterizing suspicious behaviors through a multi-step analysis of engagement trends and co-commenter 
+networks.  
+Data was collected from 39 channels over several years, with an emphasis on identifying anomalous 
+behaviors through rolling window correlation analysis and a long short-term memory (LSTM) model to 
+generate suspicion scores. The findings reveal patterns indicative of manipulation, such as increasing 
+views paired with decreasing subscribers, and highlight channels exhibiting coordinated 
+commenting behaviors. The study concludes with a call for enhanced detection methodologies that 
+integrate these findings to effectively counteract harmful campaigns on the platform.
 
-\cite{ZHAO2021358} introduces a community detection algorithm (CDEP) designed for massive social networks.
-The algorithm leverages graph compression techniques to efficiently identify communities within these complex structures.
-Notably, CDEP outshines several existing cutting-edge algorithms in terms of both effectiveness and efficiency.
-When tested on various social networks, CDEP consistently revealed community structures that
-closely matched real-world groupings. Moreover, it achieved optimal modularity scores, a key metric for
-community detection quality.  Furthermore, CDEP stands out as the only method capable of tackling large-scale
-networks within a practical time frame, demonstrating its exceptional scalability.
 
-\cite{Cinelli_2021} investigates how social media platforms like Facebook, Twitter, and Reddit contribute to the echo chamber effect.
-The researchers define ways to measure echo chambers by examining how users with similar viewpoints connect and share information
-(homophily in interaction networks) and how information slants towards reinforcing existing beliefs (bias in information diffusion).
-They also establish methods for pinpointing user attitudes on specific topics within these platforms.
-By comparing information flow across different social media, the study reveals how content
-tends to spread more readily among users who already share similar perspectives.
-
-In \cite{Diaz_2023}, social media is portrayed as a breeding ground for disinformation that thrives on identity politics.
-Actors behind the spread of disinformation weaponize rhetoric to manipulate grievances and group affiliation.
-This manipulation isn't passive; consumers actively engage in arguments, promoting narratives that challenge established facts.
-The article highlights the echo chamber effect as a culprit in solidifying these viewpoints.
-Through constant debate within closed communities, arguments become ingrained in personal identities.
-The example of Flat Earthers who leverage biblical interpretations to justify their beliefs exemplifies this phenomenon,
-where they position themselves as defenders of a purer form of Christianity.
+\cite{shekar2021} investigates the prevalence and nature of abusive comments on YouTube, 
+particularly focusing on the impact of hate speech on users, especially teenagers. 
+Utilizing exploratory data analysis and topic modeling, the research aims to identify patterns of 
+abuse and the most affected content creators by manually labeling a custom dataset due to the lack 
+of publicly available resources. Data was collected from selected YouTube celebrities using the 
+YouTube Data API, and a thorough cleaning process resulted in a Document Term Matrix for analysis. 
+The study employed Latent Dirichlet Allocation (LDA) for topic modeling and sentiment analysis using 
+the TextBlob library to assess the emotional tone of comments. Findings revealed that certain 
+YouTubers received significantly harsher comments, with varying sentiment levels indicating the 
+need for interventions to protect young creators from severe online harassment. 
+The study concludes by recommending measures such as disabling comments on particularly abused 
+videos and emphasizes the importance of understanding the dynamics of cyberbullying.
 
 \section{Methodology}
 
-This study uses a combination of news content and social context to detect fake news in its early stages, 
-by using the FakeNewsNet data repository proposed by \cite{shu2019fakenewsnet}, 
-that currently contains two different datasets with specific news content, social context and
-spaciotemporal information, and a version of the User Preference-aware FakeNews Detection (UPFD) framework
-proposed by \cite{dou2021user}.  
+This study uses a similar methodology as previous works. It consists of a data collection phase, 
+a community analysis phase, and a content analysis phase.
+
+\subsection{Data Collection}
+
+Initially, the YouTube Data API v3 was used to gather comprehensive channel metadata for each 
+specific YouTuber. Subsequently, we retrieve the IDs and titles of 50 videos from each channel. 
+Finally, we construct the YouTuber's comments dataset by aggregating all comments and replies 
+associated with each video, as well as the author information and the number of likes of each comment. 
+
+As a preliminary analysis, the study focused on two YouTubers: Felipe Neto, who has 46.6 million 
+subscribers, and Enaldinho, with 38.7 million subscribers. A total of 43,232 comments were collected 
+for Felipe Neto, while 26,702 comments were gathered for Enaldinho. From this point on, they will
+be called Youtuber 1 and Youtuber 2.
+
+\subsection{Community Analysis}
+
+To analyze the communities that emerge within each YouTuber's comment section, the dataset constructed 
+in the previous phase is used to develop two networks: the video-commenter network and 
+the co-commenter network, as demonstrated by \cite{hussain2018analyzing}. The video-commenter network 
+is established by linking each commenter to the respective video on which they commented. 
+In contrast, the co-commenter network is formed by connecting two commenters who have engaged with 
+the same video. These networks facilitate the identification and examination of highly engaged users, 
+as well as users exhibiting suspicious behaviors.
+
+\subsection{Content Analysis}
+
+Following the construction of the Co-Commenter Network and the Video-Commenter Network, we implement
+topic modeling and sentiment analysis. For the topic modeling phase, we employ the BERTopic model 
+(\cite{bertopic2022}), while the sentiment analysis is conducted using the multilingual 
+XLM-roBERTa-base model (\cite{barbieri-etal-2022-xlm}). 
+Initially, the comments are processed and cleaned, masking user handles to preserve anonymity,
+removing emojis, links and stopwords
+Then, topic modeling is utilized to extract themes associated with the communities identified in the 
+previous phase. Finally, the sentiment analysis model evaluates the polarity of the content, 
+offering deeper insights into the emotional tone of the discussions and facilitating a more 
+comprehensive analysis of the identified topics.
 
 
-\subsection{FakeNewsNet Datasets}
+\section{Early Results}
 
-The FakeNewsNet dataset is a comprehensive resource designed to aid detection and study of fake news. 
-It offers  diverse features that are essential for analysis, including news content, social context, and spatiotemporal information. 
+In this section, the early results are shown and commented.
 
-FakeNewsNet includes datasets from two different sources, Polifact and Gossipcop.
-One of the significant advantages of FakeNewsNet is its multi-dimensional data, 
-which is instrumental for studying early fake news detection, its evolution, and potential mitigation strategies. 
+After building the commenter networks, visualization methods were used for analysis.
+In Figure~\ref{fig:ytbr1_vc_net}, red nodes are commenters and green nodes are videos they commented on.
+The visualization clearly distinguishes between more engaged users, 
+located within the central cluster, and less engaged users, situated in the outer clusters.
 
-FakeNewsNet can be used for many different research applications, 
-such as the study and classification of FakeNews in its early stages by using the social context and spatiotemporal informations.
-Another possible application is the identification of malicious actors that play a powerfull role in the spreading of 
-Fake News. The FakeNewsNet can also be expanded, by adding support in different languages and different social media platforms.
-
-\subsection{UPFD Framework}
-
-\begin{figure*}
+\begin{figure*}[t!]
     \centering
-    \includegraphics[width=\textwidth]{upfd_framework.pdf}
-    \caption{User Preference-aware FakeNews Detection Framework}
-    \label{fig:upfd_framework}
+    \includegraphics[keepaspectratio,width=0.8\textwidth]{./imgs/felipeneto/felipeneto_video_commenter_network.png}
+    \caption[width=\textwidth]{Youtuber 1's Video-Commenter Network}
+    \label{fig:ytbr1_vc_net}
 \end{figure*}
 
-The User Preference-aware FakeNews Detection framework extracts the 
-news textual content and the social context from the datasets to build two Encoders. 
 
-First, the Endogenous Encoder (or the News Textual Encoder) uses pretrained text representation techniques 
-to generate the embedding of the news textual information and of historical posts of users who engaged with the news.
+Then, the BERTopic model was used on the comments made by users situated on the outer clusters, 
+followed by the sentiment analysis model, to identify the polarity of the topics.
+In Figure~\ref{fig:ytbr1_topics}, the top 10 topics with the most positive and negative topics are 
+shown, with the sentiment score greater than 80 percent. 
+Of those, it is possible to highlight the first topic of each plot, that has a large number of negative
+and positive topics. Also, with the positive topics, it is possible to see that the topics have many
+related keywords, such as "amei" and "amo", or "adoro", "gostei".
+With the negative topics, the content seems to be more spread, with less related topics. 
+The second topic shows the keyword "user", which indicates that many negative comments are made tagging
+specific users.
 
-The Exogenous Encoder (or the User Engagement Encoder) builds a news propagation graph 
-where the root node is the news and the other nodes represent users who reposted the news.
-Then, it uses a GNN to fuse the user features with this news propagation path, 
-by adding the news textual embedding and user preference embedding as node features, 
-to learn the node embeddings. 
-By applying a readout function that makes the mean pooling over all node embeddings, 
-the News Propagation Graph embedding is obtained.
+\begin{figure*}[ht]
+    \centering
+    \begin{minipage}{0.44\textwidth}
+        \centering
+        \includegraphics[keepaspectratio,width=\textwidth]{./imgs/felipeneto/most_positive_topics.png}
+    \end{minipage}%
+    \hspace{0.05\textwidth} % Adjust space between figures if needed
+    \begin{minipage}{0.44\textwidth}
+        \centering
+        \includegraphics[keepaspectratio,width=\textwidth]{./imgs/felipeneto/most_negative_topics.png}
+    \end{minipage}
+    \caption{Polarity of the topics}
+    \label{fig:ytbr1_topics}
+\end{figure*}
 
-Finally, a concatenation is made between the News Textual Embedding and the User Engagement Embedding
-to create the final News Embedding, that is fed into a Multi-Layer Perceptron with two outputs, representing
-real news and fake news probabilities. 
-The model training uses a Binary Cross-entropy loss and is updated with Stochastic Gradient Descent (SGD) Optimization.
-
-This framework is illustrated in Figure~\ref{fig:upfd_framework}. 
-
-\subsection{UPFD for Early Detection}
-
-Early detection of fake news is crucial because as the dissemination of fake news increases, 
-it becomes increasingly challenging to mitigate its effects. It is also important to consider that
-Fake News spreads wider and faster than Real News, as shown by \cite{doi:10.1126/science.aap9559}.
-
-The original User Preference-aware FakeNews Detection framework is used 
-considering the entire news propagation path. 
-To use it for early detection, the propagation path is clipped to consider only
-the first 100 reposts of a given news, and only 20 historical posts of a given user who reposted, 
-instead of the original 200. 
-User commentaries on the original news post are also considered.
-A time limit is also set, to consider only the first hour of spreading.
-% The sturcture of the propagation graph is also slightly changed, to be a Time-based news cascade that
-% allows a measure of real-time heat (the number of users posting/reposting the news at a given time t), 
-% as explained by \cite{Zhou_2020}.
-
-\section{Expected Results}
-
-The objective is to determine whether user preferences and social context can play a 
-significant role in identifying fake news in its early stages, 
-when the propagation graph is smaller and fewer users have interacted with the news.
-
-As was shown by \cite{dou2021user}, the proposed framework achieved state-of-the-art results
-with the FakeNewsNet dataset, with the authors attributing this success to the 
-inclusion of user historical posts as part of the social context. 
-Given this, incorporating user preferences is expected to enhance the early detection of fake news, 
-particularly when compared to methods that consider only news textual content, 
-only social context, or both without user preferences.
 
 \bibliographystyle{sbc}
 \bibliography{sbc-template}
