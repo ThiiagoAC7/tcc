@@ -10,7 +10,7 @@
 
 \sloppy
 
-\title{Analysis of Communities formed on Youtube Comment Sections}
+\title{Analysis of Communities formed on YouTube Comment Sections}
 
 \author{Thiago Amado Costa\inst{1}, Humberto Torres Marques Neto\inst{1}}
 
@@ -28,10 +28,11 @@
     A significant portion of these users consists of children and teenagers, who frequently interact 
     with one another in the comment sections, forming active communities. 
     However, these communities can also experience negative interactions between users, 
-    including instances of online bullying and hate speech.
+    including instances of online bullying, for example.
     To explore these communities, the YouTube Data API v3 was used to collect comments 
-    from videos produced by creators targeting this demographic. 
-    Topic modeling and sentiment analysis were then applied to further explore the 
+    from videos produced by creators targeting this demographic. Using these comments, co-commenter
+    networks were constructed.
+    Topic modeling and sentiment analysis were then applied to gain deeper insights into the  
     content and dynamics within these communities.
 \end{abstract}
 
@@ -39,41 +40,42 @@
 % >> Descrição de motivações
 % >> Problema escolhido e objetivos
 
-% - youtube
-% - kids, teenagers 
-% - brasil 
-% - bullying, 
-% - comentarios, comunidades 
+% - brasil  ???
 
-Youtube has grown exponentially since its launch in 2005. With billions of users, it is now the 
-largest video streaming platform on the web, and and a major source of online entertainment content. 
-As mentioned by \cite{app13064044}, many children and teenagers use the platform as an alternative to 
+YouTube has grown exponentially since its launch in 2005. With billions of users, it is now the 
+largest video streaming platform on the web, and a major source of online entertainment content. 
+As highlighted by \cite{app13064044}, many children and teenagers use the platform as an alternative to 
 traditional entertainment sources, such as television, with the majority of their 
-browsing time spent on YouTube.
+browsing time spent on YouTube. 
 
-One of the ways kids and teenagers interact on the platform is through the comment section. 
-This feature allows users to share their thoughts on the video, the content creator, 
+One of the ways kids and teenagers interact on the platform is through 
+the comment section. This feature allows users to share their thoughts on the video, the content creator, 
 or even other commenters. These interactions can form online communities, and the analysis of these
 communities can provide valuable insights into the dynamics of user interaction, providing a deeper 
 understanding of the platform's social ecosystem.
 
-The study by \cite{app13064044} showed that many of the current developments focus on identifying
-innapropriate content targeting young children, with textual, video and audio analysis. 
-Unfortunately, there is limited research focused on analysing the communities formed by kids and 
-teenagers. 
+The study by \cite{app13064044} demonstrates that many of the current developments focus on identifying
+inappropriate content targeting young children, with advanced machine learning and deep learning 
+techniques being used to improve the detection of these harmful videos, with the goal of enhancing 
+children's safety on the platform. However, there is limited research that focus on the analysis of 
+the social network communities formed on the comment section of YouTube creators who 
+create content aimed at children and teenagers.
 
-Therefore, this study aims to analyze the community structures that emerge within the comment 
-sections of Youtube creatore who create content aimed at children and teenagers, 
-as well as the content of the comments themselves.
+This study aims to analyze the communities formed within the comment sections of 
+YouTube creators who create content aimed at children and teenagers, as well as the content of the 
+comments themselves. 
+To achieve this, 10 Brazilian YouTube creators were selected based on their 
+subscriber count and total views, with the communities in the comment sections of each creator's 50
+most recent videos analyzed individually.
 
 \section{Related Work}
 % YOUTUBE 123 + Brazil + KIDS
 
 % Comunidade
 A social network community can be defined as a set of members of that specific network that interact
-with each other, similar to real-world communities but in a online environment.
+with each other, similar to real-world communities but in an online environment.
 These online communities are shaped based on how users interact on each platform, and the analysis
-of such communities can uncover hidden relationships between users and how they engage (\cite{nooribakhsh2024community}).
+of such communities can uncover hidden relationships between users and how they engage(\cite{nooribakhsh2024community}).
 
 A recent research by \cite{kirdemir2023} uses community analysis to investigate coordinated 
 inauthentic campaigns on YouTube, focusing on characterizing suspicious behaviors through a 
@@ -82,9 +84,7 @@ built by connecting two commenters if they commented on the same video.
 By analysing these co-commenter networks and channel engagement trends, they were able to identify
 patterns indicative of manipulation, such as increasing views paired with decreasing subscribers, 
 and highlight channels exhibiting coordinated 
-commenting behaviors. 
-
-\cite{shajari2023} follows the methodology of \cite{kirdemir2023} to
+commenting behaviors. \cite{shajari2023} follows this methodology to
 explore the problematic behaviors of commenters on YouTube, specifically focusing on "commenter mobs" 
 that manipulate engagement metrics to distort public perception. 
 By analyzing 20 targeted channels through social network analysis, the research fills gaps in 
@@ -95,21 +95,19 @@ among commenters across channels. Key findings reveal central figures driving di
 coordinated efforts to amplify specific narratives, suggesting these channels significantly contribute 
 to the spread of misinformation. 
 
-\cite{hussain2018analyzing} investigates disinformation tactics used on a specific conspiracy theory 
-channel, distinguishing its approach by focusing on user engagement patterns rather 
-than just spam detection. Data was collected using the YouTube Data API, monitoring metrics like views, 
-likes, dislikes, and comments, revealing patterns indicative of potential manipulation. 
-The analysis identified two commenter groups, peripheral and core, with the second group exhibiting higher 
-instances of inorganic behaviors. A co-commenter network analysis revealed clusters around specific 
-conspiracy topics and identified bot-like and spam actions. 
+% TODO: falar que e de um canals so
+With a similar methodology, \cite{hussain2018analyzing} investigates 
+disinformation tactics used on a specific conspiracy theory channel, distinguishing its approach by 
+focusing on user engagement patterns rather than just spam detection. Data was collected using the 
+YouTube Data API, monitoring metrics like views, likes, dislikes, and comments, revealing patterns 
+indicative of potential manipulation. The analysis identified two commenter groups, peripheral and 
+core, with the second group exhibiting higher instances of inorganic behaviors. A co-commenter network 
+analysis revealed clusters around specific conspiracy topics and identified bot-like and spam actions. 
 
 % Polarizacao / Topic Modeling
-\cite{shekar2021} investigates the prevalence and nature of abusive comments on YouTube, 
-particularly focusing on the impact of hate speech on users, especially teenagers. 
-Utilizing exploratory data analysis and topic modeling, the research aims to identify patterns of 
-abuse and the most affected content creators by manually labeling a custom dataset due to the lack 
-of publicly available resources. Data was collected from selected YouTube celebrities using the 
-YouTube Data API, and a thorough cleaning process resulted in a Document Term Matrix for analysis. 
+\cite{shekar2021} Investigates the prevalence and nature of abusive comments on YouTube, 
+particularly focusing on the impact of hate speech on users, especially teenagers, by utilizing 
+exploratory data analysis and topic modeling. 
 The study employed Latent Dirichlet Allocation (LDA) for topic modeling and sentiment analysis using 
 the TextBlob library to assess the emotional tone of comments. Findings revealed that certain 
 YouTubers received significantly harsher comments, with varying sentiment levels indicating the 
@@ -117,10 +115,27 @@ need for interventions to protect young creators from severe online harassment.
 The study concludes by recommending measures such as disabling comments on particularly abused 
 videos and emphasizes the importance of understanding the dynamics of cyberbullying.
 
+% kids
+In the context of children's content on YouTube (\cite{app13064044}), machine learning and deep learning 
+techniques are used to analyze video, audio, and user comments to detect inappropriate 
+material. These methods often rely on natural language processing for text analysis and computer 
+vision for visual content detection. 
+Despite recent advancements, the challenge of accurately detecting inappropriate content targeted at 
+this demographic using machine learning and deep learning approaches still persists.
+
+% ... contexto brasil (?)
+
+This study differs from the previously mentioned works, by exploring the co-commenter network
+methodology combined with the Topic Modeling and Sentiment Analysis, 
+specifically within the context of YouTube creators producing content for children and teenagers.
+
+
 \section{Methodology}
 
 This study uses a similar methodology as previous works. It consists of a data collection phase, 
 a community analysis phase, and a content analysis phase.
+
+% TODO: imagem da metodologia.
 
 \subsection{Data Collection}
 
@@ -128,7 +143,7 @@ Initially, the YouTube Data API v3 was used to gather comprehensive channel meta
 specific YouTuber. Subsequently, we retrieve the IDs and titles of 50 videos from each channel. 
 Finally, we construct the YouTuber's comments dataset by aggregating all comments and replies 
 associated with each video, as well as the author information and the number of likes of each comment. 
-For this, 10 different popular youtube channels were chosen, with content varying from gaming and 
+For this, 10 different popular YouTube channels were chosen, with content varying from gaming and 
 vlogging, with the number of subscribers ranging from 8 million to 46 million. The number of comments
 collected per channel ranges approximately 11,000 to 43,000.
 
@@ -143,7 +158,7 @@ who commented on less than 10 videos together, as done by \cite{shajari2023} and
 
 To identify the communities of each co-commenter network the Louvain Algorithm was used. This 
 agorithm was chosen because of its high efficiency and performance on real-world networks
-without ground truth, as shown by \cite{YOU2020104822}
+without ground truth, as shown by \cite{YOU2020104822}.
 
 Following the method developed by \cite{kirdemir2023}, a set of metrics were computed 
 for each co-commenter network, including average degree, number of nodes and edges, average coefficient,
@@ -156,12 +171,12 @@ while maintaining important features.
 
 \subsection{Content Analysis}
 
-To further understand user behaviour, we implement
+To further understand user behavior, we implement
 topic modeling and sentiment analysis. For the topic modeling phase, we employ the BERTopic model 
 (\cite{bertopic2022}), while the sentiment analysis is conducted using the multilingual 
-XLM-roBERTa-base model (\cite{barbieri-etal-2022-xlm}). 
+XLM-roBERTa-base model(\cite{barbieri-etal-2022-xlm}). 
 Initially, the comments are processed and cleaned, masking user handles to preserve anonymity,
-removing emojis, links and stopwords
+removing emojis, links and stop words
 Then, topic modeling is utilized to extract themes associated with the communities identified in the 
 previous phase. Finally, the sentiment analysis model evaluates the polarity of the content, 
 offering deeper insights into the emotional tone of the discussions and facilitating a more 
@@ -170,17 +185,12 @@ comprehensive analysis of the communities.
 \section{Results}
 
 In this section, the results are shown and analyzed.
-
-\subsection{Community Analysis}
-
 Considering that a modularity value above 0.3 is a good indicator of significant
-community structures in a network \cite{PhysRevE.70.066111}, The Louvain Algorithm successfully 
-identified communities in all of the youtubers's co-commenter networks, with the lowest value beeing
-0.52 and the highest beeing 0.90. 
+community structures in a network \cite{PhysRevE.70.066111}, The louvain algorithm successfully 
+identified significant community structures in all the YouTube creator's co-commenter networks.
 
 The KMeans and Hierarchical Clustering methods were applied with the community metrics described. 
 Both methods identified 4 distinct clusters, as can be seen in Figure ~\ref{fig:kmeans_hierarchical}.
-Then, each cluster identified is analyzed separately.
 
 \begin{figure*}[ht]
     \centering
@@ -193,26 +203,50 @@ Then, each cluster identified is analyzed separately.
         \centering
         \includegraphics[keepaspectratio,width=\textwidth]{./imgs/Hierarchical_clustering.png}
     \end{minipage}
+    % \small % or \footnotesize for even smaller text
     \caption{KMeans and Hierarchical Clustering}
     \label{fig:kmeans_hierarchical}
 \end{figure*}
 
 
 The most distinguishable channels are on clusters 1 (Rezendeevil) and 3 (Felipe Neto). 
-Both youtubers had a very high number of nodes and edges, with Rezendeevil's network having 13.808 
+Both creators had very large co-commenter networks, with Rezendeevil's network having 13.808 
 nodes and 149.033 edges, and Felipe Neto having 24.987 nodes and 125.165 edges.
-The youtuber Rezendeevil, who has the lowest modularity also had the highest 
+The creator Rezendeevil, who has the lowest modularity also had the highest 
 average degree of 21.5, number of maximal cliques and average clique size.
-Similarly, youtuber Felipe Neto had a lower modularity score of 0.64, a high number of maximal cliques,
+Similarly, Felipe Neto had a lower modularity score of 0.64, a high number of maximal cliques,
 and a high average degree of 10.
-This indicates that both youtubers have high interconnected and engaged communities. The higher average
+This indicates that both creators have high interconnected and engaged communities. The higher average
 degree indicates that Rezendeevil's followers are more engaged than Felipe Neto's, while the higher
 modularity score shows that Felipe Neto's community structure is more distinct.
 This can be seen through Figure~\ref{fig:rezendeevil_comm} and Figure ~\ref{fig:felipeneto_comm}, 
-with each community colored. 
+with each community colored.
 
-% The youtuber with the highest modularity score, Geleia, has many smaller and distinct communities, 
-% as can be seen in Figure~\ref{fig:geleia_comm}
+A per community sentiment analysis showed that most comments on Rezendeevil's videos were labeled as 
+positive by the XLM-roBERTa-base model, which is consistent with a highly engaged community of fans.
+Most positive comments focus on the video content or specific individuals featured in the video, 
+along with compliments directed towards the creator. Through topic analysis, a recurring theme labeled 
+"quero" was identified, with comments such as "Eu quero" and "Eu quero muito uma." 
+(translated as "I want" or "I really want one").
+These comments predominantly come from members of communities 5 and 6. A more detailed investigation 
+of the videos receiving these comments may reveal potential signs of direct or implicit advertising 
+aimed at children and teenagers.
+
+Unlike the previous creator, Felipe Neto had more negative comments than positive comments. 
+By analyzing the polarity per community, it was possible to identify that community 12, 
+that has the smallest number of positive comments, is also the community with the highest clustering 
+coefficient of approximately 0.23 , lowest conductance of approximately 0.06 and highest density 
+of 0.21. This can be an indicative of a close-knit organized community that frequently comment on the 
+same content spreading negative and hateful comments. 
+Topic Modeling also shows recurring themes labeled "Brasil", "Hipocrisia" 
+("Hypocrisy"), "Dinheiro, Pobres" ("Money, Poor"), with comments such as 
+"é tanta burrice por metro quadrado é um absurdo como tem gente que acredita nestas hipocrisias" 
+("it's such stupidity per square meter, it's absurd how many people believe in these hypocrisies."),
+"Esse Felipe merda é uma das desgracas que so existe aqui no Brasil, ..." 
+("This Felipe piece of trash is one of the disasters that only exists here in Brazil, ..."). 
+The other communities had lower densities, lower average clustering coefficients and higher values 
+of conductance, with a wider variety of topics and higher number of positive comments. 
+
 
 \begin{figure*}[t!]
     \centering
@@ -227,12 +261,6 @@ with each community colored.
     \caption[width=\textwidth]{Felipe Neto's Communities}
     \label{fig:felipeneto_comm}
 \end{figure*}
-
-
-Cluster 0 has the most similar network structures. All three youtuber's networks have around 11.500
-nodes and around 30.000 edges. Youtubers Enaldinho and AuthenticGames have modularity scores of
-0.75 and 0.72 respectively, and Brancoala has the modularity score of 0.86. They also have similar
-numbers of maximal cliques and average clique sizes.
 
 
 \bibliographystyle{sbc}
