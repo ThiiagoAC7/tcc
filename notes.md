@@ -1,5 +1,31 @@
 # Community YOutube KIds 
 
+## ARRUMAR:
+
+[x] - 1) Uma referência para sustentar as afirmações da Introdução é pouco; você precisa argumentar melhor 
+    com base em outras referências recentes.
+[x] - 2) Além disso, na introdução, você precisa colocar uma visão geral da metodologia e dos principais (
+resultados; por fim, deve encerrar essa primeira seção com um parágrafo como restante to texto está 
+organizado.
+
+[ ] - 3) Quando uma citaçào é "et al”, significa que são vários autores, portanto, sujeito composto e 
+terceira pessoa do plural; você precisa corrigir a concordância verbal de vários sujeitos que 
+são citações et al.
+
+[x] - 4) Acho que você pode trabalhar mais no último parágrafo da Seção 2 para posicionar melhor o 
+trabalho no conjunto de trabalhos selecionados com trabalhos relacionados.
+
+[x] - 5) Também acho que pode trabalhar melhor o primeiro parágrafo da Seção 3, 
+explicando como essa seção está organizada.
+
+[x] - 6) Seria importante usar um corretor ortográfico e gramatical para pegar erros pequenos com 
+agorithm; sugiro usar a versão gratuita do Grammarly ou alguma LLM.
+
+7) Os labels da Figura 2 estão muito (muito) pequenos.
+
+8) Por fim, acho que precisa explorar mais os resultados e buscar formas 
+mais visuais para “vender” os resultados.
+
 
 ## Methodology
 
