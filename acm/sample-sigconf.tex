@@ -1,27 +1,159 @@
-\documentclass[12pt]{article}
+%%
+%% This is file `sample-sigconf.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% samples.dtx  (with options: `all,proceedings,bibtex,sigconf')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% Any modified versions of this file must be renamed
+%% with new filenames distinct from sample-sigconf.tex.
+%% 
+%% For distribution of the original source see the terms
+%% for copying and modification in the file samples.dtx.
+%% 
+%% This generated file may be distributed as long as the
+%% original source files, as listed above, are part of the
+%% same distribution. (The sources need not necessarily be
+%% in the same archive or directory.)
+%%
+%%
+%% Commands for TeXCount
+%TC:macro \cite [option:text,text]
+%TC:macro \citep [option:text,text]
+%TC:macro \citet [option:text,text]
+%TC:envir table 0 1
+%TC:envir table* 0 1
+%TC:envir tabular [ignore] word
+%TC:envir displaymath 0 word
+%TC:envir math 0 word
+%TC:envir comment 0 0
+%%
+%% The first command in your LaTeX source must be the \documentclass
+%% command.
+%%
+%% For submission and review of your manuscript please change the
+%% command to \documentclass[manuscript, screen, review]{acmart}.
+%%
+%% When submitting camera ready or to TAPS, please change the command
+%% to \documentclass[sigconf]{acmart} or whichever template is required
+%% for your publication.
+%%
+%%
+\documentclass[sigconf]{acmart}
+%%
+%% \BibTeX command to typeset BibTeX logo in the docs
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    Bib\TeX}}}
 
-\usepackage{sbc-template}
-\usepackage{graphicx,url}
+%% Rights management information.  This information is sent to you
+%% when you complete the rights form.  These commands have SAMPLE
+%% values in them; it is your responsibility as an author to replace
+%% the commands and values with those provided to you when you
+%% complete the rights form.
+\setcopyright{acmlicensed}
+\copyrightyear{2018}
+\acmYear{2018}
+\acmDOI{XXXXXXX.XXXXXXX}
+%% These commands are for a PROCEEDINGS abstract or paper.
+\acmConference[Conference acronym 'XX]{Make sure to enter the correct
+  conference title from your rights confirmation emai}{June 03--05,
+  2018}{Woodstock, NY}
+%%
+%%  Uncomment \acmBooktitle if the title of the proceedings is different
+%%  from ``Proceedings of ...''!
+%%
+%%\acmBooktitle{Woodstock '18: ACM Symposium on Neural Gaze Detection,
+%%  June 03--05, 2018, Woodstock, NY}
+\acmISBN{978-1-4503-XXXX-X/18/06}
 
-%\usepackage[brazil]{babel}   
-\usepackage[utf8]{inputenc}  
-\usepackage{pgfgantt} % For Gantt charts
-\usepackage{enumitem}
 
-\sloppy
+%%
+%% Submission ID.
+%% Use this when submitting an article to a sponsored event. You'll
+%% receive a unique submission ID from the organizers
+%% of the event, and this ID should be used as the parameter to this command.
+%%\acmSubmissionID{123-A56-BU3}
 
-\title{Analysis of Communities formed in YouTube Comment Sections}
+%%
+%% For managing citations, it is recommended to use bibliography
+%% files in BibTeX format.
+%%
+%% You can then either use BibTeX with the ACM-Reference-Format style,
+%% or BibLaTeX with the acmnumeric or acmauthoryear sytles, that include
+%% support for advanced citation of software artefact from the
+%% biblatex-software package, also separately available on CTAN.
+%%
+%% Look at the sample-*-biblatex.tex files for templates showcasing
+%% the biblatex styles.
+%%
 
-\author{Thiago Amado Costa\inst{1}, Humberto Torres Marques Neto\inst{1}}
+%%
+%% The majority of ACM publications use numbered citations and
+%% references.  The command \citestyle{authoryear} switches to the
+%% "author year" style.
+%%
+%% If you are preparing content for an event
+%% sponsored by ACM SIGGRAPH, you must use the "author year" style of
+%% citations and references.
+%% Uncommenting
+%% the next command will enable that style.
+%%\citestyle{acmauthoryear}
 
 
-\address{ICEI – Pontifícia Universidade Católica de Minas Gerais (PUC-MG)\\
-    Belo Horizonte, Minas Gerais - Brasil \email{thiago.amado@sga.pucminas.br, humberto@sga.pucminas.br} }
-
+%%
+%% end of the preamble, start of the body of the document source.
 \begin{document}
 
-\maketitle
+%%
+%% The "title" command has an optional parameter,
+%% allowing the author to define a "short title" to be used in page headers.
+\title{Analysis of Communities formed in YouTube Comment Sections}
 
+%%
+%% The "author" command and its associated commands are used to define
+%% the authors and their affiliations.
+%% Of note is the shared affiliation of the first two authors, and the
+%% "authornote" and "authornotemark" commands
+%% used to denote shared contribution to the research.
+
+\author{Thiago Amado Costa}
+\email{thiago.amado@sga.pucminas.br}
+\authornotemark[1]
+\affiliation{%
+  \institution{Pontifical Catholic University of Minas Gerais}
+  \city{Belo Horizonte}
+  \state{Minas Gerais}
+  \country{Brazil}
+}
+
+\author{Humberto Torres Marques Neto}
+\email{humberto@pucminas.br}
+\authornotemark[2]
+\affiliation{%
+  \institution{Pontifical Catholic University of Minas Gerais}
+  \city{Belo Horizonte}
+  \state{Minas Gerais}
+  \country{Brazil}
+}
+
+
+%%
+%% By default, the full list of authors will be used in the page
+%% headers. Often, this list is too long, and will overlap
+%% other information printed in the page headers. This command allows
+%% the author to define a more concise list
+%% of authors' names for this purpose.
+\renewcommand{\shortauthors}{Costa and Marques-Neto}
+
+%%
+%% The abstract is a short summary of the work to be presented in the
+%% article.
 \begin{abstract}
     YouTube is the largest video streaming platform on the web, attracting billions of users 
     daily who watch and engage with content through comments. 
@@ -36,10 +168,36 @@
     content and dynamics within these communities.
 \end{abstract}
 
-\section{Introduction}
-% >> Descrição de motivações
-% >> Problema escolhido e objetivos
+%%
+%% The code below is generated by the tool at http://dl.acm.org/ccs.cfm.
+%% Please copy and paste the code instead of the example below.
+%%
+\begin{CCSXML}
+<ccs2012>
+   <concept>
+       <concept_id>10010147.10010257.10010293</concept_id>
+       <concept_desc>Computing methodologies~Machine learning approaches</concept_desc>
+       <concept_significance>500</concept_significance>
+       </concept>
+ </ccs2012>
+\end{CCSXML}
 
+\ccsdesc[500]{Computing methodologies~Machine learning approaches}
+
+%%
+%% Keywords. The author(s) should pick words that accurately describe
+%% the work being presented. Separate the keywords with commas.
+\keywords{YouTube, Community Detection, Topic Modeling, Sentiment Analysis}
+%% A "teaser" image appears between the author and affiliation
+%% information and the body of the document, and typically spans the
+%% page.
+
+%%
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+\section{Introduction}
 YouTube has grown exponentially since its launch in 2005. With billions of users, it is now the 
 largest video streaming platform on the web, and a major source of online entertainment content. 
 As highlighted by \cite{app13064044}, many children and teenagers use the platform as an alternative to 
@@ -99,7 +257,6 @@ modeling. Finally, Section 5 summarizes key findings, discusses limitations, and
 future research.
 
 \section{Related Work}
-% YOUTUBE 123 + Brazil + KIDS
 
 % Comunidade
 A social network community can be defined as a set of members of that specific network that interact
@@ -153,7 +310,6 @@ vision for visual content detection.
 Despite recent advancements, the challenge of accurately detecting inappropriate content targeted at 
 this demographic using machine learning and deep learning approaches still persists.
 
-
 This study differs from the previously mentioned works, by focusing specifically on the co-commenter 
 networks formed in the comment sections of YouTube creators who produce content aimed at children and teenagers. 
 While prior research has explored co-commenter networks to detect suspicious behaviors, coordinated activities, 
@@ -191,24 +347,27 @@ that facilitates ranking the most viewed channels by country and category.
 and chosen based on the size of their subscriber base, total view count, and content type, as summarized in 
 Table~\ref{tab:youtubers}.
 
-\begin{table}[h!]
+\begin{table}[ht!]
 \centering
 \caption{YouTubers with Subscribers and Views}
 \label{tab:youtubers}
-\begin{tabular}{|l|r|r|l|}
-\hline
-\textbf{YouTuber}        & \textbf{Subscribers}    & \textbf{Total Views}       & \textbf{Content Type }      \\ \hline
-Felipe Neto              & 46,800,000             & 18,171,376,895        & Entertainment, vlogs        \\ \hline
-Enaldinho                & 40,000,000             & 18,009,391,826        & Entertainment, vlogs        \\ \hline
-Natan por Aí             & 24,800,000             & 16,409,135,985        & Entertainment, vlogs        \\ \hline
-Rezendeevil              & 33,800,000             & 13,686,976,806        & Entertainment, vlogs        \\ \hline
-Robin Hood Gamer         & 21,500,000             & 11,309,149,204        & Gaming (Minecraft, Roblox)  \\ \hline
-Brancoala                & 13,100,000             & 9,897,577,900         & Family vlogs, Games         \\ \hline
-AuthenticGames           & 20,100,000             & 8,967,486,579         & Gaming (Minecraft)          \\ \hline
-Camila Loures            & 15,600,000             & 5,509,570,500         & Lifestyle vlogs             \\ \hline
-Geleia                   & 10,200,000             & 3,207,064,265         & Gaming (Minecraft)          \\ \hline
-CadresPlayer             & 8,640,000              & 2,640,042,941         & Gaming (Minecraft)          \\ \hline
-\end{tabular}
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{cccl}
+\toprule
+\textbf{YouTuber}        & \textbf{Subscribers}    & \textbf{Total Views}       & \textbf{Content Type }      \\ 
+\midrule
+Felipe Neto              & 46,800,000             & 18,171,376,895        & Entertainment, vlogs        \\ 
+Enaldinho                & 40,000,000             & 18,009,391,826        & Entertainment, vlogs        \\ 
+Natan por Aí             & 24,800,000             & 16,409,135,985        & Entertainment, vlogs        \\ 
+Rezendeevil              & 33,800,000             & 13,686,976,806        & Entertainment, vlogs        \\ 
+Robin Hood Gamer         & 21,500,000             & 11,309,149,204        & Gaming (Minecraft, Roblox)  \\ 
+Brancoala                & 13,100,000             & 9,897,577,900         & Family vlogs, Games         \\ 
+AuthenticGames           & 20,100,000             & 8,967,486,579         & Gaming (Minecraft)          \\ 
+Camila Loures            & 15,600,000             & 5,509,570,500         & Lifestyle vlogs             \\ 
+Geleia                   & 10,200,000             & 3,207,064,265         & Gaming (Minecraft)          \\ 
+CadresPlayer             & 8,640,000              & 2,640,042,941         & Gaming (Minecraft)          \\ 
+\bottomrule
+\end{tabular}}
 \end{table}
 
 Subsequently, the video IDs and titles for 50 videos from each channel were retrieved. 
@@ -262,14 +421,14 @@ The KMeans and Hierarchical Clustering methods were applied with the community m
 with the reduced complexity of the Principal Component Analysis (PCA). 
 Both methods identified 5 distinct clusters, as can be seen in Figure ~\ref{fig:kmeans_hierarchical}.
 
-\begin{figure*}[hbt!]
+\begin{figure}[hbt!]
     \centering
-    \includegraphics[width=0.8\textwidth]{./imgs/KMeans_PCA.png}
+    \includegraphics[width=\linewidth]{./imgs/KMeans_PCA.png}
     \vspace{0.5cm} % Add some vertical space between the images
-    \includegraphics[width=0.8\textwidth]{./imgs/Hierarchical_clustering.png}
+    \includegraphics[width=\linewidth]{./imgs/Hierarchical_clustering.png}
     \caption{KMeans and Hierarchical Clustering}
     \label{fig:kmeans_hierarchical}
-\end{figure*}
+\end{figure}
 
 
 The most distinguishable channels are on clusters 1 (Rezendeevil) and 3 (Felipe Neto). 
@@ -314,26 +473,26 @@ The other communities had lower densities, lower average clustering coefficients
 of conductance. These communities displayed a wider variety of topics and a higher number of positive 
 comments compared to community 12. 
 
-\begin{figure*}[hbt!]
+\begin{figure}[hbt!]
     \centering
-    \includegraphics[keepaspectratio,width=0.9\textwidth]{./imgs/felipeneto/negative_comments.png}
+    \includegraphics[keepaspectratio,width=\linewidth]{./imgs/felipeneto/negative_comments.png}
     \caption[width=\textwidth]{Felipe Neto's negative comments word cloud}
     \label{fig:felipeneto_comments}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[t]
+\begin{figure}[t]
     \centering
-    \includegraphics[keepaspectratio,width=0.9\textwidth]{./imgs/rezendeevil/communities.png}
+    \includegraphics[keepaspectratio,width=\linewidth]{./imgs/rezendeevil/communities.png}
     \caption[width=\textwidth]{Rezendeevil's Communities}
     \label{fig:rezendeevil_comm}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[t]
+\begin{figure}[t]
     \centering
-    \includegraphics[keepaspectratio,width=0.9\textwidth]{./imgs/felipeneto/communities.png}
+    \includegraphics[keepaspectratio,width=\linewidth]{./imgs/felipeneto/communities.png}
     \caption[width=\textwidth]{Felipe Neto's Communities}
     \label{fig:felipeneto_comm}
-\end{figure*}
+\end{figure}
 
 Cluster 2 represents creators with smaller, tightly-knit networks with stronger internal connections,
 which suggests that users within their communities frequently interact with each other but not much across
@@ -387,12 +546,12 @@ or actions, and expressions of anger across different themes. Examples include
 "Nao foi justo ele tirou o messi porque ele nao gosta da argentina" ("It wasn't fair, he took out Messi because he doesn't like Argentina").
 Figure ~\ref{fig:geleia_comments} provides a word cloud visualization of these comments.  
 
-\begin{figure*}[hbt!]
+\begin{figure}[hbt!]
     \centering
-    \includegraphics[keepaspectratio,width=0.9\textwidth]{./imgs/geleia/negative_comments.png}
+    \includegraphics[keepaspectratio,width=\linewidth]{./imgs/geleia/negative_comments.png}
     \caption[width=\textwidth]{Geleia0's negative comments word cloud}
     \label{fig:geleia_comments}
-\end{figure*}
+\end{figure}
 
 Cluster 4 represents creators with moderately sized networks that show similar community dynamics and 
 thematic engagement, exhibiting network structures with node counts ranging from 11,000 to 12,000 and 
@@ -417,14 +576,16 @@ the main metrics used per cluster.
 \caption{Network Characteristics by Cluster}
 \label{tab:network_analysis}
 \resizebox{\columnwidth}{!}{
-\begin{tabular}{|l|l|l|l|l|l|}
-\hline
-\textbf{Cluster} & \textbf{Nodes} & \textbf{Edges} & \textbf{Avg Degree} & \textbf{Modularity}  \\ \hline
-0             & 8,800-19,900  & 54,800-72,000      & 7.2-12.4 & 0.64-0.90 \\ \hline
-1             & 13,808        & 149,033            & 21.58    & 0.52  \\ \hline
-2             & 2,700-5,300   & 5,200-13,000       & 3.7-4.8  & 0.78-0.83 \\ \hline
-3             & 24,987        & 125,165            & 10.01    & 0.65  \\ \hline
-4             & 11,000-12,800 & 26,000-37,500      & 4.5-5.9  & 0.72-0.87  \\ \hline
+\begin{tabular}{cccccl}
+\toprule
+\textbf{Cluster} & \textbf{Nodes} & \textbf{Edges} & \textbf{Avg Degree} & \textbf{Modularity}  \\ 
+\midrule
+0             & 8,800-19,900  & 54,800-72,000      & 7.2-12.4 & 0.64-0.90 \\ 
+1             & 13,808        & 149,033            & 21.58    & 0.52  \\ 
+2             & 2,700-5,300   & 5,200-13,000       & 3.7-4.8  & 0.78-0.83 \\ 
+3             & 24,987        & 125,165            & 10.01    & 0.65  \\ 
+4             & 11,000-12,800 & 26,000-37,500      & 4.5-5.9  & 0.72-0.87  \\ 
+\bottomrule
 \end{tabular}}
 \end{table}
 
@@ -449,7 +610,7 @@ comments directed at the creator and other users, with topic modeling revealing 
 these interactions. Meanwhile, the analysis of Cluster 1's network with topic modeling highlighted 
 potential indicators of direct or implicit advertising.
 
-\section{Conclusion and Future Works}
+\section{Conclusion}
 
 This study analyzed the communities formed in the comment sections of YouTube creators who produce 
 content aimed at children and teenagers. By leveraging co-commenter network analysis, community detection 
@@ -479,6 +640,24 @@ different social media platforms. This expanded scope would provide deeper insig
 user behavior and community dynamics, ultimately contributing to the development of a  safer online 
 environment for children and teenagers.
 
-\bibliographystyle{sbc}
-\bibliography{sbc-template}
+\begin{acks}
+To my family and friends, for their love and support, and to the professors, for their guidance 
+and teachings throughout this journey.
+\end{acks}
+
+%%
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{sample-base}
+
+
+%%
+%% If your work has an appendix, this is the place to put it.
+% \appendix
+
+
 \end{document}
+\endinput
+%%
+%% End of file `sample-sigconf.tex'.
