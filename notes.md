@@ -1,6 +1,6 @@
 # Community YOutube KIds 
 
-## ARRUMAR:
+## Fix:
 
 Antes de partir as conclusões e trabalhos futuros, precisa de
 um fechamento dos resultados. 
