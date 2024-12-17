@@ -80,7 +80,8 @@ This study aims to analyze the communities formed within the comment sections of
 produce content aimed at children and teenagers, as well as the content of the comments themselves. 
 To achieve this, we selected 10 Brazilian YouTube creators based on their 
 subscriber count and total views. The analysis begins with the construction of a commenter dataset for 
-each creator by collecting all comments from 50 videos. Subsequently, we generate co-commenter networks 
+each creator by collecting all comments from 50 videos, The number of videos collected was an arbitrary choice. 
+Subsequently, we generate co-commenter networks 
 by linking users who commented on the same video. Then, we compute graph metrics and apply the 
 Louvain Algorithm to detect community structures within these networks. Additionally, we analyze the 
 content of the comments using Topic Modeling and Sentiment Analysis to gain further 
@@ -192,27 +193,31 @@ of the methodological steps taken to analyze user interactions in YouTube commen
 Initially, we used the YouTube Data API v3 to gather comprehensive channel metadata for a group of 
 YouTube creators. Through Viewstats\footnote{https://www.viewstats.com/}, an analytics platform 
 that facilitates ranking the most viewed channels by country and category, we selected ten creators 
-based on the size of their subscriber base, total view count, and content type, as summarized in 
-Table~\ref{tab:youtubers}.
+based on the size of their subscriber base, total view count, and content type. Additionally, we 
+conducted a brief manual review of each creator's content to assess whether it was 
+primarily targeted toward children and teenagers.
+A summary of the data is presented in Table~\ref{tab:youtubers}.
 
 \begin{table}[h!]
 \centering
-\caption{YouTubers with Subscribers and Views}
+\caption{YouTubers with Subscribers, Views and Number of Comments}
 \label{tab:youtubers}
-\begin{tabular}{|l|r|r|l|}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|l|r|r|r|l|}
 \hline
-\textbf{YouTuber}        & \textbf{Subscribers}    & \textbf{Total Views}       & \textbf{Content Type }      \\ \hline
-Felipe Neto              & 46,800,000             & 18,171,376,895        & Entertainment, vlogs        \\ \hline
-Enaldinho                & 40,000,000             & 18,009,391,826        & Entertainment, vlogs        \\ \hline
-Natan por Aí             & 24,800,000             & 16,409,135,985        & Entertainment, vlogs        \\ \hline
-Rezendeevil              & 33,800,000             & 13,686,976,806        & Entertainment, vlogs        \\ \hline
-Robin Hood Gamer         & 21,500,000             & 11,309,149,204        & Gaming (Minecraft, Roblox)  \\ \hline
-Brancoala                & 13,100,000             & 9,897,577,900         & Family vlogs, Games         \\ \hline
-AuthenticGames           & 20,100,000             & 8,967,486,579         & Gaming (Minecraft)          \\ \hline
-Camila Loures            & 15,600,000             & 5,509,570,500         & Lifestyle vlogs             \\ \hline
-Geleia                   & 10,200,000             & 3,207,064,265         & Gaming (Minecraft)          \\ \hline
-CadresPlayer             & 8,640,000              & 2,640,042,941         & Gaming (Minecraft)          \\ \hline
+\textbf{YouTuber}        & \textbf{Subscribers}    & \textbf{Total Views}   & \textbf{Comments}      & \textbf{Content Type }      \\ \hline
+Felipe Neto              & 46,800,000              & 18,171,376,895         & 43,232                 & Entertainment, vlogs        \\ \hline
+Enaldinho                & 40,000,000              & 18,009,391,826         & 26,702                 & Entertainment, vlogs        \\ \hline
+Natan por Aí             & 24,800,000              & 16,409,135,985         & 22,472                 & Entertainment, vlogs        \\ \hline
+Rezendeevil              & 33,800,000              & 13,686,976,806         & 34,027                 & Entertainment, vlogs        \\ \hline
+Robin Hood Gamer         & 21,500,000              & 11,309,149,204         & 40,855                 & Gaming (Minecraft, Roblox)  \\ \hline
+Brancoala                & 13,100,000              & 9,897,577,900          & 21,838                 & Family vlogs, Games         \\ \hline
+AuthenticGames           & 20,100,000              & 8,967,486,579          & 24,363                 & Gaming (Minecraft)          \\ \hline
+Camila Loures            & 15,600,000              & 5,509,570,500          & 21,463                 & Lifestyle vlogs             \\ \hline
+Geleia                   & 10,200,000              & 3,207,064,265          & 36,366                 & Gaming (Minecraft)          \\ \hline
+CadresPlayer             & 8,640,000               & 2,640,042,941          & 11,211                 & Gaming (Minecraft)          \\ \hline
 \end{tabular}
+}
 \end{table}
 
 Subsequently, we retrieved video IDs and titles for 50 videos from each channel. 
@@ -284,8 +289,10 @@ along with the greatest number of maximal cliques and the largest average clique
 This indicates that both creators have high interconnected and engaged communities. The higher average
 degree indicates that Rezendeevil's followers are more engaged than Felipe Neto's, while the higher
 modularity score shows that Felipe Neto's community structure is more distinct.
-This can be seen through Figure~\ref{fig:rezendeevil_comm} and Figure ~\ref{fig:felipeneto_comm}, 
-with each community colored.
+This is illustrated in Figure~\ref{fig:rezendeevil_comm} and Figure~\ref{fig:felipeneto_comm}, 
+where each identified community is represented by a distinct color. The edge shading indicates 
+the strength of connections: lighter edges denote weaker connections (lower edge weight), 
+while darker edges indicate stronger connections (higher edge weight).
 
 A per community sentiment analysis showed that most comments on Rezendeevil's videos were labeled as 
 positive by the XLM-roBERTa-base model, which is consistent with a highly engaged community of fans.
@@ -418,19 +425,39 @@ numbers of clustering coefficient, density and average degree. Table~\ref{tab:ne
 the main metrics used per cluster.
 
 \begin{table}[h!]
-\caption{Network Characteristics by Cluster}
+\caption{Network Characteristics by YouTuber}
 \label{tab:network_analysis}
 \resizebox{\columnwidth}{!}{
-\begin{tabular}{|l|l|l|l|l|l|}
+\begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
-\textbf{Cluster} & \textbf{Nodes} & \textbf{Edges} & \textbf{Avg Degree} & \textbf{Modularity}  \\ \hline
-0             & 8,800-19,900  & 54,800-72,000      & 7.2-12.4 & 0.64-0.90 \\ \hline
-1             & 13,808        & 149,033            & 21.58    & 0.52  \\ \hline
-2             & 2,700-5,300   & 5,200-13,000       & 3.7-4.8  & 0.78-0.83 \\ \hline
-3             & 24,987        & 125,165            & 10.01    & 0.65  \\ \hline
-4             & 11,000-12,800 & 26,000-37,500      & 4.5-5.9  & 0.72-0.87  \\ \hline
+\textbf{Cluster} & \textbf{YouTuber} & \textbf{Nodes} & \textbf{Edges} & \textbf{Avg Degree} & \textbf{Modularity} & \textbf{Communities} \\ \hline
+0 & enaldinho & 12,827 & 37,520 & 5.85 & 0.75 & 14 \\ \hline
+0 & AuthenticGames & 11,019 & 32,616 & 5.92 & 0.73 & 20 \\ \hline
+0 & brancoala & 11,589 & 26,118 & 4.51 & 0.87 & 19 \\ \hline
+1 & rezendeevil & 13,808 & 149,033 & 21.59 & 0.52 & 8 \\ \hline
+2 & geleia0 & 19,978 & 72,053 & 7.21 & 0.90 & 31 \\ \hline
+2 & RobinHoodGamer1 & 18,107 & 68,117 & 7.52 & 0.84 & 24 \\ \hline
+2 & camilaloures & 8,817 & 54,845 & 12.44 & 0.64 & 7 \\ \hline
+3 & felipeneto & 24,987 & 125,165 & 10.02 & 0.65 & 14 \\ \hline
+4 & natanporai & 5,359 & 13,017 & 4.86 & 0.83 & 26 \\ \hline
+4 & cadresplayer & 2,770 & 5,203 & 3.76 & 0.78 & 14 \\ \hline
 \end{tabular}}
 \end{table}
+
+% \begin{table}[h!]
+% \caption{Network Characteristics by Cluster}
+% \label{tab:network_analysis}
+% \resizebox{\columnwidth}{!}{
+% \begin{tabular}{|l|l|l|l|l|l|}
+% \hline
+% \textbf{Cluster} & \textbf{Nodes} & \textbf{Edges} & \textbf{Avg Degree} & \textbf{Modularity}  \\ \hline
+% 0             & 8,800-19,900  & 54,800-72,000      & 7.2-12.4 & 0.64-0.90 \\ \hline
+% 1             & 13,808        & 149,033            & 21.58    & 0.52  \\ \hline
+% 2             & 2,700-5,300   & 5,200-13,000       & 3.7-4.8  & 0.78-0.83 \\ \hline
+% 3             & 24,987        & 125,165            & 10.01    & 0.65  \\ \hline
+% 4             & 11,000-12,800 & 26,000-37,500      & 4.5-5.9  & 0.72-0.87  \\ \hline
+% \end{tabular}}
+% \end{table}
 
 Across all clusters, neutral comments dominate, reflecting passive engagement or constructive feedback.
 While positive sentiments typically reflect fan appreciation, 
