@@ -79,13 +79,16 @@ produce content aimed at children and teenagers.
 This study aims to analyze the communities formed within the comment sections of YouTube creators who 
 produce content aimed at children and teenagers, as well as the content of the comments themselves. 
 To achieve this, we selected 10 Brazilian YouTube creators based on their 
-subscriber count and total views. The analysis begins with the construction of a commenter dataset for 
-each creator by collecting all comments from 50 videos, The number of videos collected was an arbitrary choice. 
+subscriber count, content type and total views. The analysis begins with the construction of a commenter dataset for 
+each creator by collecting all comments from 50 videos. 
+The decision to analyze 50 videos per creator was made to ensure a diverse representation of their 
+content while maintaining a manageable dataset.
 Subsequently, we generate co-commenter networks 
 by linking users who commented on the same video. Then, we compute graph metrics and apply the 
 Louvain Algorithm to detect community structures within these networks. Additionally, we analyze the 
 content of the comments using Topic Modeling and Sentiment Analysis to gain further 
 insights into their thematic and emotional characteristics. 
+
 The results reveal notable community structures within the networks. Larger networks tend to exhibit 
 weaker internal connections, while smaller communities show higher densities and clustering coefficients. 
 Sentiment analysis indicates that positive comments typically express fan appreciation, whereas negative 
@@ -270,6 +273,8 @@ identified significant community structures in all the YouTube creator's co-comm
 We applied the KMeans and Hierarchical Clustering methods with the community metrics described, 
 with the reduced complexity of the Principal Component Analysis (PCA). 
 Both methods identified 5 distinct clusters, as can be seen in Figure ~\ref{fig:kmeans_hierarchical}.
+The top plot shows clusters in PCA space, while the bottom highlights hierarchical 
+relationships among creators.
 
 \begin{figure*}[hbt!]
     \centering
@@ -353,7 +358,9 @@ all comunities, with comments like "Te amo Cadres" ("I love you Cadres"), "Oi Na
 ("Hi Natan, I'm your fan"). 
 The analysis of both creators' communities with the highest proportion of negative comments showed that
 while their communities can be critic about their content, they are not entirely hostile.
-Most negative feedback arises from unmet expectations or dissatisfaction with specific content, 
+Most negative feedback arises from unmet expectations,
+often resulting from elements of the videos that users find disagreeable or dissatisfaction with 
+specific content,
 with comments like "Não faz isso Natan voce pode morrer sem ar" ("Don't do this, Natan, you could suffocate")
 or "Natan faz algo melhor que isso" ("Natan, do something better than this"). 
 For Cadresplayer, many criticisms focused on the creator's voice, with topics frequently labeled by
